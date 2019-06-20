@@ -1,32 +1,22 @@
 window.onload = function() {
-
-
-
-
-
   console.log(`popup.js:window.onload`);
   const timeNow = document.getElementById("timeNowId");
   timeNow.innerText = new Date().toLocaleTimeString();
   var resultsButton = document.getElementById("buttonId");
   resultsButton.onclick = () => {
-
     chrome.storage.sync.get(["testSyncValue"], result => {
-      request = `popup.js:testSyncValue:${result.testSyncValue}`;
-      chrome.tabs.sendMessage(activeTabId, { data: request }, function(response) {
-        sendResponse(
-          `background.js sending back to popup because done now.  synchronous response from message sent to context.js:${response}`
-        );
+      chrome.tabs.getCurrent(tab => {
+        var data = `popup.js:testSyncValue:${result.testSyncValue}`;
+        if (tab) {
+          chrome.tabs.sendMessage(tab.id, { data: data }, () => {
+            sendResponse(`popup.js sending to content.js:${data}`);
+          });
+        } else {
+          alert(
+            `popup.js calling chrome.tabs.getCurrent and getting undefined`
+          );
+        }
       });
     });
-
-
-    // chrome.runtime.sendMessage(
-    //   "FromPopupToBackground:" + timeNow.innerText,
-    //   function(response) {
-    //     response === undefined
-    //       ? alert("popup.js:return from sendMessage:undefined")
-    //       : alert("popup.js:return from sendMessage:", response);
-    //   }
-    // );
   };
 };
