@@ -1,12 +1,21 @@
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  console.log(`background.js onMessage called. request:${request}`);
-  chrome.tabs.sendMessage(activeTabId, { data: request }, function(response) {
-    console.log(`background.js:message sent succesfully. return:${response}`);
-    sendResponse(
-      `background.js sending back to popup because done now.  synchronous response from message sent to context.js:${response}`
-    );
+chrome.runtime.onInstalled.addListener(function() {
+  chrome.storage.sync.set({
+    testSyncValue: "testSyncValue999"
   });
 });
+
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  chrome.storage.sync.get(["testSyncValue"], result => {
+    const data = `${request}:${result.testSyncValue}`;
+    chrome.tabs.sendMessage(activeTabId, { data: data }, function(response) {
+      sendResponse(
+        `background.js sending back to popup because done now.  synchronous response from message sent to context.js:${response}`
+      );
+    });
+  });
+});
+
 
 // bug fix for dec tools problem below
 // https://stackoverflow.com/questions/28786723/why-doesnt-chrome-tabs-query-return-the-tabs-url-when-called-using-requirejs
