@@ -1,9 +1,5 @@
 window.onload = function() {
-  console.log(`popup.js:window.onload`);
-  const timeNow = document.getElementById("timeNowId");
-  timeNow.innerText = new Date().toLocaleTimeString();
-  var resultsButton = document.getElementById("buttonId");
-  resultsButton.onclick = () => {
+  const sendMessageUsingGetCurrentTab = () => {
     chrome.storage.sync.get(["testSyncValue"], result => {
       chrome.tabs.getCurrent(tab => {
         var data = `popup.js:testSyncValue:${result.testSyncValue}`;
@@ -19,4 +15,9 @@ window.onload = function() {
       });
     });
   };
+
+  const timeNow = document.getElementById("timeNowId");
+  timeNow.innerText = new Date().toLocaleTimeString();
+  var resultsButton = document.getElementById("buttonId");
+  resultsButton.onclick = sendMessageUsingGetCurrentTab;
 };
