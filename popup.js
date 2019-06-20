@@ -1,4 +1,9 @@
 window.onload = function() {
+
+  
+
+
+
   console.log(`popup.js:window.onload`);
   const timeNow = document.getElementById("timeNowId");
   timeNow.innerText = new Date().toLocaleTimeString();

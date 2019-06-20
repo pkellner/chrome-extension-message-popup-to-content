@@ -1,10 +1,17 @@
+chrome.runtime.onInstalled.addListener(function() {
+  chrome.storage.sync.set({
+    testSyncValue: "testSyncValue999"
+  });
+});
+
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  console.log(`background.js onMessage called. request:${request}`);
-  chrome.tabs.sendMessage(activeTabId, { data: request }, function(response) {
-    console.log(`background.js:message sent succesfully. return:${response}`);
-    sendResponse(
-      `background.js sending back to popup because done now.  synchronous response from message sent to context.js:${response}`
-    );
+  chrome.storage.sync.get(["testSyncValue"], result => {
+    request += `:testSyncValue:${result.testSyncValue}`;
+    chrome.tabs.sendMessage(activeTabId, { data: request }, function(response) {
+      sendResponse(
+        `background.js sending back to popup because done now.  synchronous response from message sent to context.js:${response}`
+      );
+    });
   });
 });
 
