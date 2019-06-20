@@ -4,7 +4,6 @@ chrome.runtime.onInstalled.addListener(function() {
   });
 });
 
-
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   chrome.storage.sync.get(["testSyncValue"], result => {
     const data = `${request}:${result.testSyncValue}`;

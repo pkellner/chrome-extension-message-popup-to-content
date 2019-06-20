@@ -5,7 +5,7 @@ window.onload = function() {
   var resultsButton = document.getElementById("buttonId");
   resultsButton.onclick = () => {
     chrome.runtime.sendMessage(
-      "FromPopupToBackground:" + timeNow.innerText,
+      "FromPopupToBackgroundToContent:" + timeNow.innerText,
       function(response) {
         response === undefined
           ? alert("popup.js:return from sendMessage:undefined")
