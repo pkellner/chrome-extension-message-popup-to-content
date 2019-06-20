@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="531c127f-9f9a-4e9f-90c3-0fedc1cd1315" name="Default Changelist" comment="" />
+    <list default="true" id="531c127f-9f9a-4e9f-90c3-0fedc1cd1315" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/background.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/content.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/popup.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +37,7 @@
   <component name="ProjectId" id="1MvM5FIMVdLDHcBNXXBrmLIiGc9" />
   <component name="PropertiesComponent">
     <property name="ASKED_MANAGE_IGNORE_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -69,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561060432256</updated>
-      <workItem from="1561060433482" duration="3007000" />
+      <workItem from="1561060433482" duration="4862000" />
     </task>
     <servers />
   </component>

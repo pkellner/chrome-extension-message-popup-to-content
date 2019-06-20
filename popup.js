@@ -7,7 +7,9 @@ window.onload = function() {
     chrome.runtime.sendMessage(
       "FromPopupToBackground:" + timeNow.innerText,
       function(response) {
-        console.log("popup.js:response:", response);
+        response === undefined
+          ? alert("popup.js:return from sendMessage:undefined")
+          : alert("popup.js:return from sendMessage:", response);
       }
     );
   };
