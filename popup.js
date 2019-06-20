@@ -2,7 +2,7 @@ window.onload = function() {
   const sendMessageUsingGetCurrentTab = () => {
     chrome.storage.sync.get(["testSyncValue"], result => {
       chrome.tabs.getCurrent(tab => {
-        var data = `popup.js:testSyncValue:${result.testSyncValue}`;
+        var data = `popup to content directly:testSyncValue:${result.testSyncValue}`;
         if (tab) {
           chrome.tabs.sendMessage(tab.id, { data: data }, () => {
             sendResponse(`popup.js sending to content.js:${data}`);
